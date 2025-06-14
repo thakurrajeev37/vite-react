@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_db3f6b8de48e4c77b3d7371913b4ec67 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_3cff374dc2614877be5d1ce6f9ed0a70 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_a7a97f18bfe54be4ac47cd07ca3a0a05 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_f6c9c7ff2bd2445bacfb89e0a9a86a9f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_db3f6b8de48e4c77b3d7371913b4ec67 }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_a7a97f18bfe54be4ac47cd07ca3a0a05 }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'vite-react-demo'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_28aff7d019fa47e391d5bcecbafc49ab }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_db3f6b8de48e4c77b3d7371913b4ec67 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6ec590ecb4754f47ad02ef575c112e30 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_a7a97f18bfe54be4ac47cd07ca3a0a05 }}/appsvc/staticsite:${{ github.sha }}'
